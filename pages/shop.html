@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/shop.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="leftNav">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="FROFETINAL Logo">
+                <h1>FROFETINAL</h1>
+            </div>
+
+            <div class="pageLink">
+                <a href="../index.html">Home</a>
+                <a href="./shop.html">Shop</a>
+                <a href="./shop.html">Collection</a>
+                <a href="./about.html">About</a>
+                <a href="./journal.html">Journal</a>
+                <a href="./support.html">Support</a>
+            </div>
+        </div>
+
+        <div class="rightNav">
+            <!-- <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" placeholder="Search">
+            </div> -->
+
+            <i class="fa-regular fa-user"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+            <div class="menuicon">
+                <i class="fa-solid fa-bars menu-icon"></i>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- ================= SHOP ================= -->
+    <section class="shop-wrapper">
+        <!-- CATEGORY BAR and SEARCH ekata stiky wenna ona -->
+        <!-- CATEGORY BAR -->
+        <!-- STICKY TOP BAR -->
+        <div class="shop-topbar">
+
+            <div class="category-bar">
+                <button class="cat-btn active" data-category="all">All</button>
+                <button class="cat-btn" data-category="men">Men</button>
+                <button class="cat-btn" data-category="women">Women</button>
+                <button class="cat-btn" data-category="kids">Kids</button>
+                <button class="cat-btn" data-category="accessories">Accessories</button>
+            </div>
+
+            <div class="shop-search">
+                <i class="fa fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search products...">
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT GRID -->
+        <div class="product-grid" id="productGrid">
+            <!-- JS map products here -->
+        </div>
+
+    </section>
+    <!-- ================= END SHOP ================= -->
+
+
+
+
+
+
+
+    <!-- ACCOUNT OVERLAY -->
+    <div class="account-overlay"></div>
+
+    <!-- ACCOUNT PANEL -->
+    <div class="account-panel">
+        <div class="account-header">
+            <span>Account</span>
+            <i class="fa-solid fa-xmark close-account"></i>
+        </div>
+
+        <div class="account-profile">
+            <img src="../assets/j/i.jpg" alt="Profile Picture">
+
+            <h3>Dananjaya Sandaruwan</h3>
+
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +94 77 123 4567
+            </p>
+
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                dananjaya@email.com
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- CART OVERLAY -->
+    <div class="cart-overlay"></div>
+
+    <!-- CART PANEL -->
+    <div class="cart-panel">
+        <div class="cart-header">
+            <span>My Bag</span>
+            <i class="fa-solid fa-xmark close-cart"></i>
+        </div>
+
+        <div class="cart-body">
+            <div class="cart-item">
+                <img src="../assets/shop/belt.png" alt="Product">
+                <div class="cart-info">
+                    <h4>Belt</h4>
+                    <p>Qty: 1</p>
+                    <span>Rs 1200</span>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="../assets/shop/blue t shirt.png" alt="Product">
+                <div class="cart-info">
+                    <h4>Formal Shirt</h4>
+                    <p>Qty: 2</p>
+                    <span>Rs 5000</span>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="../assets/shop/deck shoes.png" alt="Product">
+                <div class="cart-info">
+                    <h4>Deck Shoes</h4>
+                    <p>Qty: 1</p>
+                    <span>Rs 7800</span>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="../assets/shop/mens denim.png" alt="Product">
+                <div class="cart-info">
+                    <h4>Mens Denim</h4>
+                    <p>Qty: 1</p>
+                    <span>Rs 4600</span>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="../assets/shop/mens office shirts.png" alt="Product">
+                <div class="cart-info">
+                    <h4>Office Shirt</h4>
+                    <p>Qty: 1</p>
+                    <span>Rs 3800</span>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <img src="../assets/shop/mens cap.png" alt="Product">
+                <div class="cart-info">
+                    <h4>Mens Cap</h4>
+                    <p>Qty: 1</p>
+                    <span>Rs 1700</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="total">
+                <span>Total</span>
+                <strong>Rs 24100</strong>
+            </div>
+            <button>Checkout</button>
+        </div>
+    </div>
+
+
+
+
+    <footer>
+        <div class="footer-top">
+            <!-- Logo & About -->
+            <div class="f-link">
+                <div class="f1">
+                    <img src="../assets/logo.png" alt="FROFETINAL Logo">
+                    <h1>FROFETINAL</h1>
+                </div>
+                <p>
+                    Elegance for the boardroom and beyond. High-quality professional attire designed for longevity and
+                    style.
+                </p>
+            </div>
+
+            <!-- Support Links -->
+            <div class="f-link">
+                <h1>SUPPORT</h1>
+                <ul>
+                    <li><a href="#">Customer Care</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+
+            <!-- Company Links -->
+            <div class="f-link">
+                <h1>COMPANY</h1>
+                <ul>
+                    <li><a href="./about.html#OurStory">Our Story</a></li>
+                    <li><a href="./about.html#Sustainability">Sustainability</a></li>
+                    <li><a href="./about.html#Careers">Careers</a></li>
+                    <li><a href="./about.html#Press">Press</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="f-link">
+                <h1>FOLLOW US</h1>
+                <div class="icon-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom copyright -->
+        <div class="footer-bottom">
+            2026 <span>FROFETINAL</span>. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+
+
+    <script src="../js/shop.js"></script>
+</body>
+
+</html>
