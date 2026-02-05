@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - FROFETINAL</title>
+    <link rel="stylesheet" href="../css/shop.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="leftNav">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="FROFETINAL Logo">
+                <h1>FROFETINAL</h1>
+            </div>
+
+            <div class="pageLink">
+                <a href="../index.html">Home</a>
+                <a href="./shop.html">Shop</a>
+                <a href="./collection.html">Collection</a>
+                <a href="./about.html">About</a>
+                <a href="./journal.html">Journal</a>
+                <a href="./support.html">Support</a>
+            </div>
+        </div>
+
+        <div class="rightNav">
+            <i class="fa-regular fa-user" onclick="window.location.href='./login.html'"></i>
+            <i class="fa-solid fa-bag-shopping" onclick="window.location.href='./shop.html'"></i>
+            <!-- Just link back to shop or open cart -->
+        </div>
+    </nav>
+
+    <div class="checkout-wrapper">
+        <!-- Billing Details -->
+        <div class="checkout-form">
+            <form>
+                <h2>Billing Details</h2>
+
+                <div class="fieldset">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label>First Name</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-col">
+                            <label>Last Name</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label>Email Address</label>
+                            <input type="email" required>
+                        </div>
+                        <div class="form-col">
+                            <label>Phone Number</label>
+                            <input type="tel" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <h3>Shipping Address</h3>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label>Address</label>
+                            <input type="text" placeholder="Street Address" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label>City</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-col">
+                            <label>Postal Code</label>
+                            <input type="text" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fieldset">
+                    <h3>Payment Method</h3>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="xxxx xxxx xxxx xxxx" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-col">
+                            <label>CVC</label>
+                            <input type="text" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="place-order-btn">Place Order</button>
+            </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-items">
+                <!-- JS Injected -->
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="checkoutTotal">Rs. 0</span>
+            </div>
+            <p style="font-size: 13px; color: #777; margin-top: 10px;">
+                By placing your order, you agree to our Terms of Service and Privacy Policy.
+            </p>
+        </div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div class="overlay">
+        <div class="success-box">
+            <i class="fa-regular fa-circle-check"></i>
+            <h2>Order Placed!</h2>
+            <p>Thank you for shopping with FROFETINAL. <br> You will be redirected to the home page shortly.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-bottom">
+            2026 <span>FROFETINAL</span>. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script src="../js/checkout.js"></script>
+</body>
+
+</html>

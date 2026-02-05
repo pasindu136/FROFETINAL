@@ -3,12 +3,52 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Segoe UI", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
     background: #fff;
     color: #111;
     overflow-x: hidden;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Global Transition for smoother interactions */
+a,
+button,
+.product-card,
+input {
+    transition: all 0.3s ease;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 
