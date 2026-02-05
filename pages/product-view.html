@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product View - FROFETINAL</title>
+    <link rel="stylesheet" href="../css/shop.css">
+    <link rel="stylesheet" href="../css/product-view.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/toast.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="leftNav">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="FROFETINAL Logo">
+                <h1>FROFETINAL</h1>
+            </div>
+
+            <div class="pageLink">
+                <a href="../index.html">Home</a>
+                <a href="./shop.html">Shop</a>
+                <a href="./collection.html">Collection</a>
+                <a href="./about.html">About</a>
+                <a href="./journal.html">Journal</a>
+                <a href="./support.html">Support</a>
+            </div>
+        </div>
+
+        <div class="rightNav">
+            <i class="fa-regular fa-user" onclick="window.location.href='./login.html'"></i>
+            <i class="fa-solid fa-bag-shopping"></i>
+            <div class="menuicon">
+                <i class="fa-solid fa-bars menu-icon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="product-view-container">
+        <!-- Left: Image -->
+        <div class="product-image">
+            <img id="mainImage" src="" alt="Product Image">
+        </div>
+
+        <!-- Right: Details -->
+        <div class="product-details">
+            <div class="breadcrumb">
+                <a href="./shop.html">Shop</a> / <span id="breadcrumbCurrent">Product Name</span>
+            </div>
+
+            <h1 class="product-title" id="productTitle">Product Name</h1>
+            <div class="product-price" id="productPrice">Rs. 0.00</div>
+
+            <p class="product-description">
+                Elevate your style with this premium quality item. Designed for comfort and durability,
+                it is the perfect addition to your wardrobe. Available in various sizes to fit you perfectly.
+            </p>
+
+            <div class="product-options">
+                <div class="option-group">
+                    <label>Size</label>
+                    <div class="size-selector">
+                        <button class="size-btn">S</button>
+                        <button class="size-btn active">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <label>Quantity</label>
+                    <div class="qty-selector">
+                        <button class="qty-btn" id="qtyMinus">-</button>
+                        <input type="text" class="qty-input" id="qtyInput" value="1" readonly>
+                        <button class="qty-btn" id="qtyPlus">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="add-to-cart-btn">Add to Cart</button>
+                <button class="buy-now-btn">Buy Now</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="f-link">
+                <div class="f1">
+                    <img src="../assets/logo.png" alt="FROFETINAL Logo">
+                    <h1>FROFETINAL</h1>
+                </div>
+                <p>
+                    Elegance for the boardroom and beyond. High-quality professional attire designed for longevity and
+                    style.
+                </p>
+            </div>
+
+            <div class="f-link">
+                <h1>SUPPORT</h1>
+                <ul>
+                    <li><a href="#">Customer Care</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+
+            <div class="f-link">
+                <h1>COMPANY</h1>
+                <ul>
+                    <li><a href="./about.html#OurStory">Our Story</a></li>
+                    <li><a href="./about.html#Sustainability">Sustainability</a></li>
+                    <li><a href="./about.html#Careers">Careers</a></li>
+                    <li><a href="./about.html#Press">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="f-link">
+                <h1>FOLLOW US</h1>
+                <div class="icon-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            2026 <span>FROFETINAL</span>. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <!-- ACCOUNT OVERLAY -->
+    <div class="account-overlay"></div>
+
+    <!-- ACCOUNT PANEL -->
+    <div class="account-panel">
+        <div class="account-header">
+            <span>Account</span>
+            <i class="fa-solid fa-xmark close-account"></i>
+        </div>
+
+        <div class="account-profile">
+            <img src="../assets/j/i.jpg" alt="Profile Picture">
+            <h3>Dananjaya Sandaruwan</h3>
+            <p><i class="fa-solid fa-phone"></i> +94 77 123 4567</p>
+            <p><i class="fa-solid fa-envelope"></i> dananjaya@email.com</p>
+        </div>
+    </div>
+
+    <!-- CART OVERLAY -->
+    <div class="cart-overlay"></div>
+
+    <!-- CART PANEL -->
+    <div class="cart-panel">
+        <div class="cart-header">
+            <span>My Bag</span>
+            <i class="fa-solid fa-xmark close-cart"></i>
+        </div>
+
+        <div class="cart-body">
+            <!-- JS Injected -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="total">
+                <span>Total</span>
+                <strong>Rs 0</strong>
+            </div>
+            <button>Checkout</button>
+        </div>
+    </div>
+
+    <!-- Load Data first -->
+    <script src="../js/data.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/product-view.js"></script>
+    <!-- Use shop.js shared logic (like cart) if possible or copy parts -->
+    <script>
+        // Simple menu toggle script reused from shop.js
+        const menuIcon = document.querySelector(".menu-icon");
+        const pageLink = document.querySelector(".pageLink");
+        if (menuIcon) {
+            menuIcon.addEventListener("click", () => {
+                pageLink.classList.toggle("active");
+            });
+        }
+    </script>
+</body>
+
+</html>

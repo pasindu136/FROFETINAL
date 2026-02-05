@@ -1,41 +1,35 @@
+
 const menuIcon = document.querySelector(".menu-icon");
 const pageLink = document.querySelector(".pageLink");
 
-menuIcon.addEventListener("click", () => {
-    pageLink.classList.toggle("active");
-});
+if (menuIcon && pageLink) {
+    menuIcon.addEventListener("click", () => {
+        pageLink.classList.toggle("active");
+    });
+}
 
-
+// Category Slider
 document.addEventListener("DOMContentLoaded", () => {
-
     const categories = [
-        {name: "Abaya", img: "./assets/Categories/Abaya.jpg"},
-        {name: "Coats", img: "./assets/Categories/Coats1.jpg"},
-        {name: "Dresses", img: "./assets/Categories/Dresses.jpg"},
-        {name: "Footwear", img: "./assets/Categories/Footwear1.jpg"},
-        {name: "Kaftan", img: "./assets/Categories/Kaftan.jpg"},
-        {name: "Kids", img: "./assets/Categories/Kids.jpg"},
-        {name: "Loungewear", img:"./assets/Categories/Loungewear.jpg"},
-        {name: "Men", img: "./assets/Categories/Men.jpg"},
-        {name: "Denim", img: "./assets/Categories/Pants.jpg"},
-        {name: "Scarves", img: "./assets/Categories/Scarves.jpg"},
-        {name: "Shirts", img: "./assets/Categories/Shirts.jpg"},
-        {name: "Sportswear", img: "./assets/Categories/Sportswear.jpg"},
-        {name: "Women", img: "./assets/Categories/Women.jpg"}
+        { name: "Abaya", img: "./assets/Categories/Abaya.jpg" },
+        { name: "Coats", img: "./assets/Categories/Coats1.jpg" },
+        { name: "Dresses", img: "./assets/Categories/Dresses.jpg" },
+        { name: "Footwear", img: "./assets/Categories/Footwear1.jpg" },
+        { name: "Kaftan", img: "./assets/Categories/Kaftan.jpg" },
+        { name: "Kids", img: "./assets/Categories/Kids.jpg" },
+        { name: "Loungewear", img: "./assets/Categories/Loungewear.jpg" },
+        { name: "Men", img: "./assets/Categories/Men.jpg" },
+        { name: "Denim", img: "./assets/Categories/Pants.jpg" },
+        { name: "Scarves", img: "./assets/Categories/Scarves.jpg" },
+        { name: "Shirts", img: "./assets/Categories/Shirts.jpg" },
+        { name: "Sportswear", img: "./assets/Categories/Sportswear.jpg" },
+        { name: "Women", img: "./assets/Categories/Women.jpg" }
     ];
 
     const container = document.getElementById("categoryCard");
+    if (!container) return; // Guard clause
 
-    const scrollStep = 220;
-    const scrollInterval = 3000;
-
-    let interval;
-
-    /* =====================
-       CREATE CARDS
-    ===================== */
-
-    function createCard(cat){
+    function createCard(cat) {
         const div = document.createElement("div");
         div.innerHTML = `
             <img src="${cat.img}" alt="${cat.name}">
@@ -44,19 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return div;
     }
 
-    // original cards
-    categories.forEach(cat => {
-        container.appendChild(createCard(cat));
-    });
+    // Load Cards
+    categories.forEach(cat => container.appendChild(createCard(cat)));
+    // Clone for infinite loop
+    categories.slice(0, 4).forEach(cat => container.appendChild(createCard(cat)));
 
-    // 🔥 CLONE FIRST FEW (for infinite effect)
-    categories.slice(0, 4).forEach(cat => {
-        container.appendChild(createCard(cat));
-    });
-
-    /* =====================
-       AUTO SCROLL
-    ===================== */
+    // Auto Scroll Logic
+    const scrollStep = 220;
+    const scrollInterval = 3000;
+    let interval;
 
     function slideRight() {
         container.scrollBy({ left: scrollStep, behavior: "smooth" });
@@ -70,194 +60,133 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(interval);
     }
 
-    /* =====================
-       RESET WITHOUT JUMP
-    ===================== */
-
     container.addEventListener("scroll", () => {
-
-        // if reached cloned area → instantly reset
         if (container.scrollLeft >= container.scrollWidth - container.clientWidth - scrollStep) {
             setTimeout(() => {
-                container.scrollLeft = 0; // no animation
+                container.scrollLeft = 0;
             }, 400);
         }
     });
 
-    /* =====================
-       USER FRIENDLY EVENTS
-    ===================== */
-
-    // pause on hover
     container.addEventListener("mouseenter", stopAutoScroll);
     container.addEventListener("mouseleave", startAutoScroll);
-
-    // mobile pause
     container.addEventListener("touchstart", stopAutoScroll);
     container.addEventListener("touchend", startAutoScroll);
 
     startAutoScroll();
 });
 
-
-
-
+// New Arrivals Slider
 document.addEventListener("DOMContentLoaded", () => {
+    // Safety check for global data
+    if (!window.products) {
+        console.error("Products not loaded in index.js");
+        return;
+    }
 
-    const products = [
-        {img:"./assets/product/belt (1).png", name:"Classic Belt", color:"Black", price:"Rs 2,500"},
-        {img:"./assets/product/belt (2).png", name:"Leather Belt", color:"Brown", price:"Rs 3,000"},
-        {img:"./assets/product/belt (3).png", name:"Premium Belt", color:"Tan", price:"Rs 3,500"},
-        {img:"./assets/product/belt (4).png", name:"Office Belt", color:"Dark Brown", price:"Rs 2,800"},
-        {img:"./assets/product/belt (5).png", name:"Modern Belt", color:"Black", price:"Rs 3,200"},
-        {img:"./assets/product/belt (10).png", name:"Slim Belt", color:"Gray", price:"Rs 2,900"},
-        {img:"./assets/product/shirt ofice.png", name:"Slim Belt", color:"Gray", price:"Rs 2,900"},
-        {img:"./assets/product/belt (13).png", name:"Slim Belt", color:"Gray", price:"Rs 2,900"},
-        {img:"./assets/product/belt (14).png", name:"Slim Belt", color:"Gray", price:"Rs 2,900"},
-        {img:"./assets/product/blue tshirt.png", name:"Slim Belt", color:"Gray", price:"Rs 2,900"},
-        {img:"./assets/product/weding frock.png", name:"Slim Belt", color:"Gray", price:"Rs 2,900"}
-    ];
+    const products = window.products;
+    const newArrivals = products.slice(0, 8); // Display first 8 items
 
     const slider = document.getElementById("productSlider");
     const left = document.querySelector(".newArrivals .left");
     const right = document.querySelector(".newArrivals .right");
 
+    if (!slider) return;
+
+    // Create Card Function
+    function createCard(p, originalIndex) {
+        const div = document.createElement("div");
+        div.className = "productCard";
+
+        // Fix path: data.js has "../assets", index.html needs "./assets"
+        const imagePath = p.image ? p.image.replace("../assets", "./assets") : "";
+
+        div.innerHTML = `
+            <img src="${imagePath}" loading="lazy" class="fade-in-img">
+            <h4>${p.name}</h4>
+            <span>${(p.category && p.category[0]) || 'Gen'}</span>
+            <strong>Rs. ${p.price}</strong>
+        `;
+
+        div.style.cursor = "pointer";
+        div.addEventListener("click", () => {
+            window.location.href = `./pages/product-view.html?id=${originalIndex}`;
+        });
+
+        return div;
+    }
+
+    // Populate Slider
+    newArrivals.forEach(p => {
+        const originalIndex = products.indexOf(p);
+        slider.appendChild(createCard(p, originalIndex));
+    });
+
+    // Clone for infinite effect
+    newArrivals.slice(0, 4).forEach(p => {
+        const originalIndex = products.indexOf(p);
+        slider.appendChild(createCard(p, originalIndex));
+    });
+
     const step = 220;
     const intervalTime = 3000;
     let interval;
 
-    /* create card */
-    function createCard(p){
-        const div = document.createElement("div");
-        div.className = "productCard";
-
-        div.innerHTML = `
-            <img src="${p.img}">
-            <h4>${p.name}</h4>
-            <span>${p.color}</span>
-            <strong>${p.price}</strong>
-        `;
-        return div;
+    function slideRight() {
+        slider.scrollBy({ left: step, behavior: "smooth" });
     }
 
-    /* original */
-    products.forEach(p => slider.appendChild(createCard(p)));
-
-    /* clone for infinite */
-    products.slice(0,4).forEach(p => slider.appendChild(createCard(p)));
-
-    /* slide */
-    function slideRight(){
-        slider.scrollBy({left: step, behavior:"smooth"});
+    function slideLeft() {
+        slider.scrollBy({ left: -step, behavior: "smooth" });
     }
 
-    function slideLeft(){
-        slider.scrollBy({left: -step, behavior:"smooth"});
-    }
-
-    /* auto */
-    function start(){
+    function start() {
         interval = setInterval(slideRight, intervalTime);
     }
 
-    function stop(){
+    function stop() {
         clearInterval(interval);
     }
 
-    /* infinite reset */
-    slider.addEventListener("scroll", ()=>{
-        if(slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - step){
-            setTimeout(()=>{
+    // Infinite Scroll Reset
+    slider.addEventListener("scroll", () => {
+        if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth - step) {
+            setTimeout(() => {
                 slider.scrollLeft = 0;
-            },400);
+            }, 400);
         }
     });
 
-    /* arrows */
-    right.addEventListener("click", ()=>{ stop(); slideRight(); start(); });
-    left.addEventListener("click", ()=>{ stop(); slideLeft(); start(); });
+    // Arrow Listeners
+    if (right) right.addEventListener("click", () => { stop(); slideRight(); start(); });
+    if (left) left.addEventListener("click", () => { stop(); slideLeft(); start(); });
 
-    /* pause on hover */
     slider.addEventListener("mouseenter", stop);
     slider.addEventListener("mouseleave", start);
 
     start();
 });
 
+// UI Interactions (User Icon, Cart)
+// Note: Cart opening is also handled by cart.js, but we'll keep the user icon logic here.
+document.addEventListener("DOMContentLoaded", () => {
+    const userIcon = document.querySelector(".fa-user");
+    const accountPanel = document.querySelector(".account-panel");
+    const accountOverlay = document.querySelector(".account-overlay");
+    const closeAccount = document.querySelector(".close-account");
 
+    if (userIcon) {
+        userIcon.addEventListener("click", () => {
+            window.location.href = "./pages/login.html";
+        });
+    }
 
+    function closePanel() {
+        if (accountPanel) accountPanel.classList.remove("active");
+        if (accountOverlay) accountOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+    }
 
-
-
-
-
-
-
-
-
-
-const userIcon = document.querySelector(".fa-user");
-const accountPanel = document.querySelector(".account-panel");
-const accountOverlay = document.querySelector(".account-overlay");
-const closeAccount = document.querySelector(".close-account");
-
-userIcon.addEventListener("click", () => {
-    accountPanel.classList.add("active");
-    accountOverlay.classList.add("active");
+    if (closeAccount) closeAccount.addEventListener("click", closePanel);
+    if (accountOverlay) accountOverlay.addEventListener("click", closePanel);
 });
-
-function closePanel() {
-    accountPanel.classList.remove("active");
-    accountOverlay.classList.remove("active");
-}
-
-closeAccount.addEventListener("click", closePanel);
-accountOverlay.addEventListener("click", closePanel);
-
-userIcon.addEventListener("click", () => {
-    accountPanel.classList.add("active");
-    accountOverlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-});
-
-function closePanel() {
-    accountPanel.classList.remove("active");
-    accountOverlay.classList.remove("active");
-    document.body.style.overflow = "";
-}
-
-
-
-
-
-
-
-
-const cartIcon = document.querySelector(".fa-bag-shopping");
-const cartPanel = document.querySelector(".cart-panel");
-const cartOverlay = document.querySelector(".cart-overlay");
-const closeCart = document.querySelector(".close-cart");
-
-cartIcon.addEventListener("click", () => {
-    cartPanel.classList.add("active");
-    cartOverlay.classList.add("active");
-    document.body.style.overflow = "hidden";
-});
-
-function closeCartPanel() {
-    cartPanel.classList.remove("active");
-    cartOverlay.classList.remove("active");
-    document.body.style.overflow = "";
-}
-
-closeCart.addEventListener("click", closeCartPanel);
-cartOverlay.addEventListener("click", closeCartPanel);
-
-
-
-
-
-
-
-
-
